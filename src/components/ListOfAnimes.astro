@@ -1,40 +1,9 @@
 ---
 import AnimeItem from './AnimeItem.astro'
-const animes = [
-    {
-        id: 'naruto-shippuden',
-        title: 'Naruto Shippuden',
-        img: 'https://gothamotaku.b-cdn.net/wp-content/uploads/2020/08/Naruto-Shippuden-2007%E2%80%932017-768x1152.jpg'
-    },
-    {
-        id: 'berserk',
-        title: 'Berserk',
-        img: 'https://gothamotaku.b-cdn.net/wp-content/uploads/2020/08/Berserk-1997%E2%80%931998.jpg'
-    },
-    {
-        id: 'monster',
-        title: 'Monster',
-        img: 'https://gothamotaku.b-cdn.net/wp-content/uploads/2020/08/Monster-2004%E2%80%932010.jpg'
-    },
-    {
-        id: 'vinland-saga',
-        title: 'Vinland Saga',
-        img: 'https://gothamotaku.b-cdn.net/wp-content/uploads/2020/08/Vinland-Saga-2019%E2%80%93-En-emisi%C3%B3n-768x1084.jpg'
-    },
-    {
-        id: 'one-piece',
-        title: 'One Piece',
-        img: 'https://gothamotaku.b-cdn.net/wp-content/uploads/2020/08/One-Piece-1999%E2%80%93-En-emisi%C3%B3n.jpg'
-    },
-    {
-        id: 'hunter-x-hunter',
-        title: 'Hunte X Hunter',
-        img: 'https://gothamotaku.b-cdn.net/wp-content/uploads/2020/08/Hunter-x-Hunter-2011%E2%80%932014.jpg'
-    },
-]
+import {animes} from '../data/animes'
 ---
 
-<ul class="grid grid-cols-2 md:grid-cols-3 gap-3">
+<ul class="grid grid-cols-2 md:grid-cols-3 gap-3 px-4 pb-3">
     {
         animes.map(({id, title, img}) => {
             return (

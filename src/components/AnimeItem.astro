@@ -14,5 +14,10 @@ const {
 ---
 
 <a class="hover:scale-105 inline-block transition-all hover:contrast-125 hover:shadow-2xl" href={`/${id}`}>
-    <img class="aspect-[250/360] h-full w-full object-cover rounded-md" src={img} alt=`Portada de ${title}` />
+    <img 
+        class="aspect-[250/360] h-full w-full object-cover rounded-md" 
+        src={img} 
+        alt=`Portada de ${title}`
+        style={`view-transition-name: ${id}`}
+    />
 </a>

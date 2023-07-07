@@ -15,10 +15,18 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="view-transition" content="same-origin" /> <!-- para que las transiciones sean solo para las páginas del mismo dominio, en este caso: http://localhost:3000 -->
 	</head>
 	<body>
-		<slot />
+		<div id="content">
+			<slot />
+		</div>
 	</body>
+	<!--<footer class="bg-pink-300">
+		<div class="m-auto w-max text-center">
+			<strong>Animea by Jorge</strong>
+		</div>
+	</footer> -->
 </html>
 <style is:global>
 	:root {
@@ -33,4 +41,15 @@ const { title } = Astro.props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 100ms;
+	}
 </style>
+
+<script>
+	import { startViewTransition } from "../utils/navigation";
+
+	startViewTransition()
+</script>

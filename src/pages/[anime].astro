@@ -1,0 +1,56 @@
+---
+import {animes} from '../data/animes'
+import Layout from '../layouts/Layout.astro';
+const {anime} = Astro.params
+
+const animeInfo = animes.find(a => a.id === anime)
+
+if (!animeInfo) {
+    return Astro.redirect('/404')
+}
+---
+
+<Layout title={`Anime: ${animeInfo.title}`}>
+    <main class="m-auto max-w-3xl">
+        <header class="relative">
+            <a href="/" type="button" class="fixed left-2 top-2 text-white bg-pink-300 hover:bg-pink-400 focus:ring-4 focus:outline-none focus:ring-pink-500 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-pink-300 dark:hover:bg-pink-400 dark:focus:ring-pink-500 rotate-180 z-10">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+                <span class="sr-only">Icon description</span>
+            </a>
+            <h1 
+                class="font-black uppercase text-5xl text-center py-8"
+                style="view-transition-name: title"
+            >
+                Animes
+                <span class="block text-[22px]">recomendados</span>
+            </h1>
+            
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-x-12 mt-2 md:mt-14 px-8">
+            <div class="flex flex-col">
+                <picture class="w-full relative mb-4">
+                    <img 
+                        class="aspect-[250/360] h-full w-full object-cover rounded-md" 
+                        src={animeInfo.img} 
+                        alt={`Portada de ${animeInfo.title}`}
+                        style={`view-transition-name: ${animeInfo.id}`}
+                    />
+                </picture>
+                <button type="button" class="text-white bg-pink-300 hover:bg-pink-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-pink-300 dark:hover:bg-pink-400 dark:focus:ring-pink-500 justify-center">
+                    Ver ahora
+                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                  </svg>
+                </button>
+            </div>
+            <aside class="mt-10 md:mt-0">
+                <h1 class="text-6xl font-black mb-4">{animeInfo.title}</h1>
+                <p class="text-lg mb-4 text-justify">{animeInfo.sinopsis}</p>
+                <p class="mb-4 md:mb-0"><strong>Autor: </strong><span class="font-semibold text-gray-800">{animeInfo.author}</span></p>
+                <!--<p>{animeInfo.stars}</p> -->
+            </aside>
+        </div>
+    </main>
+</Layout>
